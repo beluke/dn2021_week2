@@ -7,6 +7,7 @@ namespace ShoppingList
     {
         static void Main(string[] args)
         {
+            // map for items and prices
             var items = new Dictionary<string, string> {
                 {"apple", "0.99"},
                 {"coca-cola", "1.99"},
@@ -18,15 +19,20 @@ namespace ShoppingList
                 {"sun glasses", "8.99"}
             };
 
+            // list for saving current order
             var order = new List<string>();
-
+            
+            // enter main loop
             do
             {
+                // output menu to user
                 PrintMenu(ref items);
 
+                // prompt user to input item
                 Console.Write("\nWhat item would you like to order: ");
                 string item = Console.ReadLine().ToLower();
 
+                // input validation
                 if (items.Keys.Contains(item))
                 {
                     order.Add(item);
@@ -36,14 +42,17 @@ namespace ShoppingList
                     Console.WriteLine("\nSorry, that item is not in the list...\n");
                     continue;
                 }
-
+                
+                // prompt user to add another item
                 Console.Write("\nWould you like to add another item to your list? (y/n): ");
                 if (Console.ReadLine().ToLower() != "y") break;
 
                 Console.WriteLine("\n");
-
+            
+            // continue loop on non input of "y"
             } while (true);
 
+            // lambda to calculate total price of order
             decimal totalPrice = new Func<decimal>(() => {
                 decimal total = 0;
                 foreach (var item in order)
@@ -54,6 +63,7 @@ namespace ShoppingList
                 return total;
             })();
 
+            // lambda to calculate average price per item on order
             decimal avgPrice = new Func<decimal>(() => {
                 decimal total = 0;
                 foreach(var item in order)
@@ -64,6 +74,7 @@ namespace ShoppingList
                 return total / order.Count;
             })();
 
+            // ouput information to user
             Console.WriteLine("\nThanks for your order!\nHere's what you got:\n");
             foreach (var item in order)
             {
@@ -75,6 +86,7 @@ namespace ShoppingList
             Console.WriteLine("\nAverage price per item: $" + avgPrice.ToString("######.00"));
         }
 
+        // method for printing menu using map provided from main
         static void PrintMenu(ref Dictionary<string, string> items) {
             Console.WriteLine("{0,-11}  {1,-5}", "Item", "Price");
             Console.WriteLine("{0,-20}", "===================");
