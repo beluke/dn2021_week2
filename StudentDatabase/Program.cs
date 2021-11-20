@@ -46,13 +46,14 @@ namespace StudentDatabase
                     // enter try catch for getting category name
                     try
                     {
+                        // prompt user for category
                         Console.Write("\nPlease enter category: ");
                         category = Console.ReadLine().ToLower();
-
-                        // throw new exception if category is invalid
-
+                         
+                        // determine which category
                         category = "favorite food".Contains(category) ? "favorite food" : "hometown".Contains(category) ? "hometown" : "";
 
+                        // throw new exception if category is invalid
                         if (category.Length <= 0)
                             throw new Exception($"Invalid category. Please try again!");
                     }
