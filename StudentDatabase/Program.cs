@@ -6,15 +6,32 @@ namespace StudentDatabase
     {
         static void Main(string[] args)
         {
-            // 2d student data array
-            // [student_name, hometown, favorite_food]
-            string[,] studentData = {
-                { "John Doe", "Gibraltar, MI", "Apples" },
-                { "Caleb Johnson","Detroi, MI","Pizza" },
-                { "Sara Silverman","Sagniaw, MI","Tomatoes" },
-                { "Kim Petras","Grand Rapids, MI","Gluten Free Bananas" },
-                { "Beyonce Knowles","San Francisco, CA","Bread" },
-                { "Charli XCX","Los Angeles, CA","Cotton Candy" }
+            // student data arrays
+            string[] studentNames = {
+                "John Doe", 
+                "Caleb Johnson",
+                "Sara Silverman",
+                "Kim Petras",
+                "Beyonce Knowles",
+                "Charli XCX",
+            };
+            
+            string[] hometowns = {
+                "Gibraltar, MI",
+                "Detroi, MI",
+                "Sagniaw, MI",
+                "Grand Rapids, MI",
+                "San Francisco, CA",
+                "Los Angeles, CA"
+            };
+            
+            string[] favoriteFoods = {
+                "Apples",
+                "Pizza",
+                "Tomatoes",
+                "Gluten Free Bananas",
+                "Bread",
+                "Cotton Candy"
             };
 
             do
@@ -38,7 +55,7 @@ namespace StudentDatabase
                 }
 
                 // output student name
-                Console.WriteLine($"\n\tStudent name: {studentData[idx-1,0]}");
+                Console.WriteLine($"\n\tStudent name: {studentNames[idx-1]}");
 
                 do
                 {
@@ -67,10 +84,10 @@ namespace StudentDatabase
                     // dispaly info based on category
                     switch (category) {
                         case "hometown":
-                            Console.WriteLine($"\n\tHometown: {studentData[idx - 1, 1]}");
+                            Console.WriteLine($"\n\tHometown: {hometowns[idx-1]}");
                             break;
                         case "favorite food":
-                            Console.WriteLine($"\n\tFavorite food: {studentData[idx - 1,2]}");
+                            Console.WriteLine($"\n\tFavorite food: {favoriteFoods[idx-1]}");
                             break;
                         default:
                             // should never be reached
