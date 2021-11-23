@@ -64,7 +64,7 @@ namespace StudentDatabase
                     try
                     {
                         // prompt user for category
-                        Console.Write("\nPlease enter category: ");
+                        Console.Write("\nPlease enter category (\"hometown\" or \"favorite food\"): ");
                         category = Console.ReadLine().ToLower();
                          
                         // determine which category
