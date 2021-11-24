@@ -13,19 +13,17 @@ namespace BlockbusterLab
             RunTime = runtime;
             Scenes = scenes;
             CurrentTime = 0;
+            this.MediaType = Media.DVD;
         }
         public int CurrentTime { get; set; }
 
         public override void PrintInfo()
         {
-            Console.Write(
-                "\nTitle: " + this.Title +
-                "\nCategory: " + this.GetCategory() +
-                "\nRuntime: " + this.RunTime +
-                "\nScenes: "); this.PrintScenes();
+            base.PrintInfo();
+            Console.WriteLine($"Media: {this.GetMediaType()}");
         }
 
-        public void Play()
+        public override void Play()
         {
 
             int s = -1;

@@ -6,33 +6,33 @@ namespace BlockbusterLab
 {
     class VHS : Movie
     {
+        private int CurrentScene { get; set; }
+
         public VHS(string title, Genre genre, int runtime, string[] scenes)
         {
-            Title = title;
-            Category = genre;
-            RunTime = runtime;
-            Scenes = scenes;
-            CurrentTime = 0;
+            this.Title = title;
+            this.Category = genre;
+            this.RunTime = runtime;
+            this.Scenes = scenes;
+            this.CurrentScene = 0;
+            this.MediaType = Media.VHS;
         }
-        public int CurrentTime { get; set; }
 
         public override void PrintInfo()
         {
-            Console.Write(
-                "\nTitle: " + this.Title +
-                "\nCategory: " + this.GetCategory() +
-                "\nRuntime: " + this.RunTime + " minutes\n");
+            base.PrintInfo();
+            Console.WriteLine($"Media: {this.GetMediaType()}");
         }
 
-        public void Play()
+        public override void Play()
         {
-            if (CurrentTime >= Scenes.Length) Console.WriteLine("Movie has ended, please rewind...");
-            Console.WriteLine($"Current scene: {Scenes[CurrentTime++]}");
+            if (CurrentScene >= Scenes.Length) Console.WriteLine("Movie has ended, please rewind...");
+            Console.WriteLine($"Current scene: {Scenes[CurrentScene++]}");
         }
 
         public void Rewind()
         {
-            CurrentTime = 0;
+            CurrentScene = 0;
         }
     }
 }
