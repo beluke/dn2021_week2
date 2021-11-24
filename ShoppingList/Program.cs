@@ -59,13 +59,13 @@ namespace ShoppingList
                 Console.WriteLine("\t{0,-12} ${1,-5}", item, items[item]);
             }
             Console.WriteLine("\t{0,-20}", "===================");
-            Console.WriteLine("\t{0,-12} ${1,-5}", "total", getTotalPrice(items, order).ToString("######.00"));
+            Console.WriteLine("\t{0,-12} ${1,-5}", "total", getTotalPrice(ref items, ref order).ToString("######.00"));
 
-            Console.WriteLine("\nAverage price per item: $" + getAvgPrice(items, order).ToString("######.00"));
+            Console.WriteLine("\nAverage price per item: $" + getAvgPrice(ref items, ref order).ToString("######.00"));
         }
 
         // method for printing menu using map provided from main
-        static void PrintMenu(ref Dictionary<string, string> items) {
+        static void PrintMenu(ref Dictionary<string, decimal> items) {
             Console.WriteLine("{0,-11}  {1,-5}", "Item", "Price");
             Console.WriteLine("{0,-20}", "===================");
             foreach (var item in items)
